@@ -1,0 +1,7 @@
+body {
+    direction: rtl;
+}
+
+.thick-black-hr {
+    border: 1.5px solid rgba(0,0,0,0.5);
+}
