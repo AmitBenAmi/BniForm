@@ -3,3 +3,6 @@
 
 # NPM modules
 node_modules/**/*
+
+# Distributions
+dist/**/*
