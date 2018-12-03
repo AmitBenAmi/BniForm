@@ -10,6 +10,12 @@ class Member extends Sequelize.Model {
         })
     }
 
+    constructor(member) {
+        super()
+        this.firstName = member.firstName
+        this.lastName = member.lastName
+    }
+
     getFullName() {
         return `${this.firstName} ${this.lastName}`
     }
