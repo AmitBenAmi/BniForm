@@ -1,17 +1,20 @@
 import Sequelize from 'sequelize'
+import DefaultModel from './defaultModel'
 
-class Member extends Sequelize.Model {
-    static init(sequelize) {
-        return super.init({
+class Member extends DefaultModel {
+    static async init(sequelize) {
+        let attributes = {
             firstName: Sequelize.STRING,
             lastName: Sequelize.STRING
-        }, {
+        }
+        let options = {
             sequelize
-        })
+        }
+        await super.init(attributes, options, false)
     }
 
     constructor(member) {
-        super()
+        super(member)
         this.firstName = member.firstName
         this.lastName = member.lastName
     }

@@ -2,12 +2,11 @@ import Member from '../Models/member'
 
 class MemberController {
     constructor(db) {
-        this.init(db)
+        this.db = db
     }
 
-    async init(db) {
-        Member.init(db)
-        await Member.sync({force: false})
+    async init() {
+        await Member.init(this.db)
     }
 
     async getAllMembers(req, res) {

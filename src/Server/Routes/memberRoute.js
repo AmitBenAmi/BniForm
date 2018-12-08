@@ -1,8 +1,9 @@
 import MemberController from '../Controllers/memberController'
 
 class MemberRoute {
-    static init(app, db) {
+    static async init(app, db) {
         this.memberController = new MemberController(db)
+        await this.memberController.init()
         
         app.route('/member')
             .get(this.memberController.getAllMembers)

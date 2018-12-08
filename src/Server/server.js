@@ -14,15 +14,19 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', { root: path.resolve('dist') })
 })
 
-app.listen(port, () => {
-    console.info(`Listening on port ${port}`)
-});
+let startServer = () => {
+    app.listen(port, () => {
+        console.info(`Listening on port ${port}`)
+    })
+};
 
 (async () => {
     try {
         let db = new DataBase('bni', 'bni', 'Aa123456', 'localhost')
         await db.connect()
-        MemberRoute.init(app, db)
+        await MemberRoute.init(app, db)
+
+        startServer()
     } catch (e) {
         console.error(e.message)
         console.error(e.stack)
