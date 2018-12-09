@@ -10,7 +10,7 @@ module.exports = {
     },
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
+        contentBase: './dist/Client',
         hot: true
     },
     resolve: {
@@ -35,20 +35,19 @@ module.exports = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(['dist/Client']),
         new HtmlWebpackPlugin({
             title: 'BNI Form!'
         }),
         new webpack.ProvidePlugin({
             $: 'jquery',
-            $$$1: 'jquery',
             jQuery: 'jquery',
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
     output: {
         filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist/Client'),
         publicPath: '/'
     }
 }

@@ -8,10 +8,10 @@ const app = express()
 const port = process.env.PORT || 1234
 
 app.use(bodyParser.json())
-app.use(express.static(path.resolve('dist')))
+app.use(express.static(path.resolve('dist/Client')))
 
 app.get('/', (req, res) => {
-    res.sendFile('index.html', { root: path.resolve('dist') })
+    res.sendFile('index.html', { root: path.resolve('dist/Client') })
 })
 
 let startServer = () => {
