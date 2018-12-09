@@ -22,7 +22,7 @@ let startServer = () => {
 
 (async () => {
     try {
-        let db = new DataBase('bni', 'bni', 'Aa123456', 'localhost')
+        let db = new DataBase('bni', 'bni', 'Aa123456', '127.0.0.1')
         await db.connect()
         await MemberRoute.init(app, db)
 
