@@ -18,8 +18,9 @@ module.exports = {
             'node_modules'
         ],
         alias: {
-            CSS: path.resolve('src/Client/css'),
-            HTML: path.resolve('src/Client/html')
+            Styles: path.resolve('src/Client/styles'),
+            HTML: path.resolve('src/Client/html'),
+            Services: path.resolve('src/Client/scripts/services')
         }
     },
     module: {
