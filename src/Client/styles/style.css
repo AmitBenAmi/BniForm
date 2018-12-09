@@ -2,3 +2,7 @@
 #form-container {
     display: none;
 }
+
+.delete-button {
+    float: left;
+}
