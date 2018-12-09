@@ -1,6 +1,7 @@
 import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import DataBase from './DB/mySqlDatabase'
 import MemberRoute from './Routes/memberRoute'
 
@@ -9,6 +10,7 @@ const port = process.env.PORT || 1234
 
 app.use(bodyParser.json())
 app.use(express.static(path.resolve('dist/Client')))
+app.use(cors())
 
 app.get('/', (req, res) => {
     res.sendFile('index.html', { root: path.resolve('dist/Client') })
