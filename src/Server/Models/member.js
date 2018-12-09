@@ -18,10 +18,6 @@ class Member extends DefaultModel {
         this.firstName = member.firstName
         this.lastName = member.lastName
     }
-
-    getFullName() {
-        return `${this.firstName} ${this.lastName}`
-    }
 }
 
 export default Member
