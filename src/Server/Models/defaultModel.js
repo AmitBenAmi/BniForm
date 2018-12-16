@@ -1,9 +1,8 @@
 import Sequelize from 'sequelize'
 
 class DefaultModel extends Sequelize.Model {
-    static async init(attributes, options, forceSync) {
+    static async init(attributes, options) {
         await super.init(attributes, options)
-        await super.sync({force: forceSync})
     }
 }
 

@@ -5,7 +5,10 @@ class DataBase extends Sequelize {
         super(database, username, password, {
             host: host,
             dialect: dialect,
-            timezone: '+02:00'
+            timezone: '+02:00',
+            sync: {
+                force: false
+            }
         })
     }
 

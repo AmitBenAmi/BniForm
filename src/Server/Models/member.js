@@ -10,7 +10,7 @@ class Member extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(attributes, options, false)
+        await super.init(attributes, options)
     }
 
     constructor(member) {
