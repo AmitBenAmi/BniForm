@@ -4,8 +4,26 @@ import DefaultModel from './defaultModel'
 class Member extends DefaultModel {
     static async init(sequelize) {
         let attributes = {
-            firstName: Sequelize.STRING,
-            lastName: Sequelize.STRING
+            firstName: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                validate: {
+                    is: /^[a-zא-ת-]+$/i,
+                    notNull: true,
+                    notEmpty: true,
+                    len: [2,15]
+                }
+            },
+            lastName: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                validate: {
+                    is: /^[a-zא-ת-]+$/i,
+                    notNull: true,
+                    notEmpty: true,
+                    len: [2,25]
+                }
+            }
         }
         let options = {
             sequelize
