@@ -8,7 +8,7 @@ class Member extends DefaultModel {
                 type: Sequelize.STRING,
                 allowNull: false,
                 validate: {
-                    is: /^[a-zא-ת-]+$/i,
+                    is: /^[a-zא-ת-]+$/i, // Just letters and hyphen
                     notNull: true,
                     notEmpty: true,
                     len: [2,15]
@@ -18,10 +18,20 @@ class Member extends DefaultModel {
                 type: Sequelize.STRING,
                 allowNull: false,
                 validate: {
-                    is: /^[a-zא-ת-]+$/i,
+                    is: /^[a-zא-ת-]+$/i, // Just letters and hyphen
                     notNull: true,
                     notEmpty: true,
                     len: [2,25]
+                }
+            },
+            phone: {
+                type: Sequelize.STRING(10),
+                allowNull: false,
+                validate: {
+                    isNumeric: true,
+                    notNull: true,
+                    notEmpty: true,
+                    len: [7,10]
                 }
             }
         }
