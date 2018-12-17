@@ -45,6 +45,7 @@ class Member extends DefaultModel {
         super(member)
         this.firstName = member.firstName
         this.lastName = member.lastName
+        this.phone = member.phone
     }
 }
 
