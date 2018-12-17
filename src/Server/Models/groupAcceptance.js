@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
+import Member from './member'
 
 class GroupAcceptance extends DefaultModel {
     static async init(sequelize) {
@@ -27,5 +28,7 @@ class GroupAcceptance extends DefaultModel {
         this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
     }
 }
+
+GroupAcceptance.belongsTo(Member)
 
 export default GroupAcceptance
