@@ -27,3 +27,5 @@ class GroupAcceptance extends DefaultModel {
         this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
     }
 }
+
+export default GroupAcceptance
