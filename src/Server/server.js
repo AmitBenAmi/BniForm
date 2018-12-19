@@ -2,7 +2,7 @@ import path from 'path'
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import DataBase from './DB/mySqlDatabase'
+import DataBase from './DB/Infrastructure/mySqlDatabase'
 import MemberRoute from './Routes/memberRoute'
 
 const app = express()

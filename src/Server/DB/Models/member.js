@@ -39,6 +39,7 @@ class Member extends DefaultModel {
             sequelize
         }
         await super.init(attributes, options)
+        await super.sync({alter: true})
     }
 
     constructor(member) {

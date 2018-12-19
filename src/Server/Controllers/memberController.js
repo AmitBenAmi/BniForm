@@ -1,4 +1,4 @@
-import Member from '../Models/member'
+import Member from '../DB/Models/member'
 
 class MemberController {
     constructor(db) {
