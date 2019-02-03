@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --open",
-    "start": "nodemon ./src/Server/sserver.mjs",
+    "start": "nodemon ./src/Server/server.js",
     "compile": "babel src/Server --out-dir dist/Server",
-    "build": "webpack && babel src/Server --out-dir dist/Server",
-    "build-dev": "babel src/Server --out-dir dist/Server && webpack-dev-server --open"
+    "build": "webpack && npm run compile",
+    "build-dev": "npm run compile && webpack-dev-server --open"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
