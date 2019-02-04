@@ -18,8 +18,9 @@ class GroupTutoring extends DefaultModel {
             sequelize
         }
         await super.init(attributes, options)
-        await super.sync({alter: true})
+        
         GroupTutoring.setGroupAcceptanceAssociations()
+        await super.sync({alter: true})
     }
 
     constructor(groupTutoring) {
@@ -39,7 +40,7 @@ class GroupTutoring extends DefaultModel {
         GroupTutoring.belongsTo(GroupAcceptance, {
             as: 'acceptance'
         })
-        GroupAcceptance.hasOne(GroupTutoring, {
+        GroupTutoring.hasOne(GroupAcceptance, {
             as: 'groupTutoring',
             onDelete: 'cascade'
         })

@@ -1,8 +1,6 @@
 import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 import Member from './member'
-import PersonalTutoring from './personalTutoring'
-import GroupTutoring from './groupTutoring'
 
 class GroupAcceptance extends DefaultModel {
     static async init(sequelize) {
@@ -22,8 +20,9 @@ class GroupAcceptance extends DefaultModel {
             sequelize
         }
         await super.init(attributes, options)
-        await super.sync({alter: true})
+
         GroupAcceptance.setMemberAssocations()
+        await super.sync({alter: true})
     }
     
     constructor(groupAcceptance) {
@@ -46,8 +45,9 @@ class GroupAcceptance extends DefaultModel {
         GroupAcceptance.belongsTo(Member, {
             as: 'tutor'
         })
-        Member.hasOne(GroupAcceptance, {
-            as: 'acceptance'
+        GroupAcceptance.hasOne(Member, {
+            as: 'acceptance',
+            onDelete: 'cascade'
         })
     }
 }
