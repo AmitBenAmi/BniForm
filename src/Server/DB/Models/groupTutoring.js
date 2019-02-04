@@ -15,7 +15,7 @@ class GroupTutoring extends DefaultModel {
             personalMainPresentationSignature: Sequelize.STRING
         }
         GroupTutoring.belongsTo(GroupAcceptance, {
-            as: acceptance
+            as: 'acceptance'
         })
         let options = {
             sequelize

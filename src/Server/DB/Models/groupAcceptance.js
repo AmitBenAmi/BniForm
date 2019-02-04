@@ -19,14 +19,14 @@ class GroupAcceptance extends DefaultModel {
             tutorTeamCeoApprovalSignature: Sequelize.STRING
         }
         GroupAcceptance.belongsTo(Member, {
-            as: tutor
+            as: 'tutor'
         })
         GroupAcceptance.hasOne(PersonalTutoring, {
-            as: personalTutoring,
+            as: 'personalTutoring',
             onDelete: 'cascade'
         })
         groupAcceptance.hasOne(GroupTutoring, {
-            as: groupTutoring,
+            as: 'groupTutoring',
             onDelete: 'cascade'
         })
         let options = {

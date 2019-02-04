@@ -17,7 +17,7 @@ class PersonalTutoring extends DefaultModel {
             mamtakTutorSignature: Sequelize.STRING
         }
         PersonalTutoring.belongsTo(GroupAcceptance, {
-            as: acceptance
+            as: 'acceptance'
         })
         let options = {
             sequelize
