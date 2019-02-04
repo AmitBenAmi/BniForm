@@ -33,6 +33,14 @@ class Member extends DefaultModel {
                     notEmpty: true,
                     len: [7,10]
                 }
+            },
+            tutor: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false,
+                validate: {
+                    notNull: true
+                }
             }
         }
         let options = {
@@ -47,6 +55,7 @@ class Member extends DefaultModel {
         this.firstName = member.firstName
         this.lastName = member.lastName
         this.phone = member.phone
+        this.tutor = member.tutor
     }
 }
 
