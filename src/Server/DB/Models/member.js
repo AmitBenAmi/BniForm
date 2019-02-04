@@ -1,7 +1,19 @@
 import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 
+const syncOptions = {
+    alter: true
+}
+
 class Member extends DefaultModel {
+    constructor(member) {
+        super(member)
+        this.firstName = member.firstName
+        this.lastName = member.lastName
+        this.phone = member.phone
+        this.isTutor = member.isTutor
+    }
+
     static async init(sequelize) {
         let attributes = {
             firstName: {
@@ -51,15 +63,11 @@ class Member extends DefaultModel {
         }
 
         await super.init(attributes, options, syncOptions)
-        await super.sync(this.syncOptions)
+        await Member.sync()
     }
 
-    constructor(member) {
-        super(member)
-        this.firstName = member.firstName
-        this.lastName = member.lastName
-        this.phone = member.phone
-        this.isTutor = member.isTutor
+    static async sync() {
+        await super.sync(syncOptions)
     }
 }
 

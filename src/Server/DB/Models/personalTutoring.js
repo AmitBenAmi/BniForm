@@ -2,7 +2,26 @@ import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 import GroupAcceptance from './groupAcceptance'
 
+const syncOptions = {
+    alter: true,
+    force: true
+}
+
 class PersonalTutoring extends DefaultModel {
+    constructor(personalTutoring) {
+        super(personalTutoring)
+        this.meetingWithTutorialCeo = personalTutoring.meetingWithTutorialCeo
+        this.firstMeetingWithMasterTutor = personalTutoring.firstMeetingWithMasterTutor
+        this.secondMeetingWithMasterTutor = personalTutoring.secondMeetingWithMasterTutor
+        this.thirdMeetingWithMasterTutor = personalTutoring.thirdMeetingWithMasterTutor
+        this.oneOnOneSharedMeetingDateWithTutor = personalTutoring.oneOnOneSharedMeetingDateWithTutor
+        this.oneOnOneSharedMeetingWithWhoWithTutor = personalTutoring.oneOnOneSharedMeetingWithWhoWithTutor
+        this.businessVisualityTutorial = personalTutoring.businessVisualityTutorial
+        this.mamtakTutorial = personalTutoring.mamtakTutorial
+        this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
+        this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
+    }
+
     static async init(sequelize) {
         let attributues = {
             meetingWithTutorialCeo: Sequelize.DATEONLY,
@@ -19,27 +38,13 @@ class PersonalTutoring extends DefaultModel {
         let options = {
             sequelize
         }
-        let syncOptions = {
-            alter: true,
-            force: true
-        }
 
-        await super.init(attributues, options, syncOptions)
-        await super.sync(this.syncOptions)
+        await super.init(attributues, options)
+        await PersonalTutoring.sync()
     }
 
-    constructor(personalTutoring) {
-        super(personalTutoring)
-        this.meetingWithTutorialCeo = personalTutoring.meetingWithTutorialCeo
-        this.firstMeetingWithMasterTutor = personalTutoring.firstMeetingWithMasterTutor
-        this.secondMeetingWithMasterTutor = personalTutoring.secondMeetingWithMasterTutor
-        this.thirdMeetingWithMasterTutor = personalTutoring.thirdMeetingWithMasterTutor
-        this.oneOnOneSharedMeetingDateWithTutor = personalTutoring.oneOnOneSharedMeetingDateWithTutor
-        this.oneOnOneSharedMeetingWithWhoWithTutor = personalTutoring.oneOnOneSharedMeetingWithWhoWithTutor
-        this.businessVisualityTutorial = personalTutoring.businessVisualityTutorial
-        this.mamtakTutorial = personalTutoring.mamtakTutorial
-        this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
-        this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
+    static async sync() {
+        await super.sync(syncOptions)
     }
 
     static async associate() {
@@ -47,7 +52,7 @@ class PersonalTutoring extends DefaultModel {
             onDelete: 'cascade'            
         })
 
-        await super.sync(this.syncOptions)
+        await PersonalTutoring.sync()
     }
 }
 

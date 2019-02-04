@@ -2,7 +2,24 @@ import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 import GroupAcceptance from './groupAcceptance'
 
+const syncOptions = {
+    alter: true,
+    force: true
+}
+
 class GroupTutoring extends DefaultModel {
+    constructor(groupTutoring) {
+        super(groupTutoring)
+        this.givingAndReceivingReferencesSecretsDate = groupTutoring.givingAndReceivingReferencesSecretsDate
+        this.givingAndReceivingReferencesSecretsSignatu = groupTutoring.givingAndReceivingReferencesSecretsSignature
+        this.guestsInvitingSkillsDate = groupTutoring.guestsInvitingSkillsDate 
+        this.guestsInvitingSkillsSignatu = groupTutoring.guestsInvitingSkillsSignature
+        this.effectiveOneonOneMeetingsDate = groupTutoring.effectiveOneonOneMeetingsDate 
+        this.effectiveOneonOneMeetingsSignatu = groupTutoring.effectiveOneonOneMeetingsSignature
+        this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
+        this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
+    }
+    
     static async init(sequelize) {
         let attributes = {
             givingAndReceivingReferencesSecretsDate: Sequelize.DATEONLY,
@@ -17,25 +34,13 @@ class GroupTutoring extends DefaultModel {
         let options = {
             sequelize
         }
-        let syncOptions = {
-            alter: true,
-            force: true
-        }
 
-        await super.init(attributes, options, syncOptions)
-        await super.sync(this.syncOptions)
+        await super.init(attributes, options)
+        await GroupTutoring.sync()
     }
 
-    constructor(groupTutoring) {
-        super(groupTutoring)
-        this.givingAndReceivingReferencesSecretsDate = groupTutoring.givingAndReceivingReferencesSecretsDate
-        this.givingAndReceivingReferencesSecretsSignatu = groupTutoring.givingAndReceivingReferencesSecretsSignature
-        this.guestsInvitingSkillsDate = groupTutoring.guestsInvitingSkillsDate 
-        this.guestsInvitingSkillsSignatu = groupTutoring.guestsInvitingSkillsSignature
-        this.effectiveOneonOneMeetingsDate = groupTutoring.effectiveOneonOneMeetingsDate 
-        this.effectiveOneonOneMeetingsSignatu = groupTutoring.effectiveOneonOneMeetingsSignature
-        this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
-        this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
+    static async sync() {
+        await super.sync(syncOptions)
     }
 
     static async associate() {
@@ -43,7 +48,7 @@ class GroupTutoring extends DefaultModel {
             onDelete: 'cascade'
         })
 
-        await super.sync(this.syncOptions)
+        await GroupTutoring.sync()
     }
 }
 

@@ -2,7 +2,27 @@ import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 import Member from './member'
 
+const syncOptions = {
+    alter: true,
+    force: true
+}
+
 class GroupAcceptance extends DefaultModel {
+    constructor(groupAcceptance) {
+        super(groupAcceptance)
+        this.joinRequestDate = groupAcceptance.joinRequestDate
+        this.acceptanceDate = groupAcceptance.acceptanceDate
+        this.formReturnToFriendCommitteeDueDate = groupAcceptance.formReturnToFriendCommitteeDueDate
+        this.formReturningDate = groupAcceptance.formReturningDate
+        this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
+        this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
+        this.personalTutoring = groupAcceptance.personalTutoring
+        this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
+        this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
+        this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
+        this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
+    }
+
     static async init(sequelize) {
         let attributes = {
             joinRequestDate: Sequelize.DATEONLY,
@@ -19,28 +39,13 @@ class GroupAcceptance extends DefaultModel {
         let options = {
             sequelize
         }
-        let syncOptions = {
-            alter: true,
-            force: true
-        }
 
         await super.init(attributes, options)
-        await super.sync(this.syncOptions)
+        await GroupAcceptance.sync()
     }
     
-    constructor(groupAcceptance) {
-        super(groupAcceptance)
-        this.joinRequestDate = groupAcceptance.joinRequestDate
-        this.acceptanceDate = groupAcceptance.acceptanceDate
-        this.formReturnToFriendCommitteeDueDate = groupAcceptance.formReturnToFriendCommitteeDueDate
-        this.formReturningDate = groupAcceptance.formReturningDate
-        this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
-        this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
-        this.personalTutoring = groupAcceptance.personalTutoring
-        this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
-        this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
-        this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
-        this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
+    static async sync() {
+        await super.sync(syncOptions)
     }
 
     static async associate() {
@@ -49,7 +54,7 @@ class GroupAcceptance extends DefaultModel {
             onDelete: 'cascade'
         })
 
-        await super.sync(this.syncOptions)
+        await GroupAcceptance.sync()
     }
 }
 
