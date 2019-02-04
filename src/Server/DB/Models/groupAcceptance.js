@@ -22,7 +22,10 @@ class GroupAcceptance extends DefaultModel {
         await super.init(attributes, options)
 
         GroupAcceptance.setMemberAssocations()
-        await super.sync({alter: true})
+        await super.sync({
+            alter: true,
+            force: true
+        })
     }
     
     constructor(groupAcceptance) {
@@ -33,7 +36,6 @@ class GroupAcceptance extends DefaultModel {
         this.formReturningDate = groupAcceptance.formReturningDate
         this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
         this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
-        this.tutor = groupAcceptance.tutor
         this.personalTutoring = groupAcceptance.personalTutoring
         this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
         this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
@@ -43,10 +45,7 @@ class GroupAcceptance extends DefaultModel {
 
     static setMemberAssocations() {
         GroupAcceptance.belongsTo(Member, {
-            as: 'tutor'
-        })
-        GroupAcceptance.hasOne(Member, {
-            as: 'acceptance',
+            as: 'tutor',
             onDelete: 'cascade'
         })
     }

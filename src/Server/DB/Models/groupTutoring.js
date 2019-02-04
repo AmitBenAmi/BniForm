@@ -18,9 +18,11 @@ class GroupTutoring extends DefaultModel {
             sequelize
         }
         await super.init(attributes, options)
-        
         GroupTutoring.setGroupAcceptanceAssociations()
-        await super.sync({alter: true})
+        await super.sync({
+            alter: true,
+            force: true
+        })
     }
 
     constructor(groupTutoring) {
@@ -33,15 +35,10 @@ class GroupTutoring extends DefaultModel {
         this.effectiveOneonOneMeetingsSignatu = groupTutoring.effectiveOneonOneMeetingsSignature
         this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
         this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
-        this.acceptance = groupTutoring.acceptance
     }
 
     static setGroupAcceptanceAssociations() {
         GroupTutoring.belongsTo(GroupAcceptance, {
-            as: 'acceptance'
-        })
-        GroupTutoring.hasOne(GroupAcceptance, {
-            as: 'groupTutoring',
             onDelete: 'cascade'
         })
     }

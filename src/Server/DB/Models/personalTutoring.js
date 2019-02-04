@@ -22,7 +22,10 @@ class PersonalTutoring extends DefaultModel {
         await super.init(attributues, options)
         
         PersonalTutoring.setGroupAcceptanceAssociations()
-        await super.sync({alter: true})
+        await super.sync({
+            alter: true,
+            force: true
+        })
     }
 
     constructor(personalTutoring) {
@@ -37,16 +40,11 @@ class PersonalTutoring extends DefaultModel {
         this.mamtakTutorial = personalTutoring.mamtakTutorial
         this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
         this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
-        this.acceptance = personalTutoring.acceptance
     }
 
     static setGroupAcceptanceAssociations() {
         PersonalTutoring.belongsTo(GroupAcceptance, {
-            as: 'acceptance'
-        })
-        PersonalTutoring.hasOne(GroupAcceptance, {
-            as: 'personalTutoring',
-            onDelete: 'cascade'
+            onDelete: 'cascade'            
         })
     }
 }
