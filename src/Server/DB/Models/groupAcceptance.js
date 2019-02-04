@@ -18,23 +18,13 @@ class GroupAcceptance extends DefaultModel {
             tutorTeamCeoApprovalDate: Sequelize.DATEONLY,
             tutorTeamCeoApprovalSignature: Sequelize.STRING
         }
-        GroupAcceptance.belongsTo(Member, {
-            as: 'tutor'
-        })
-        GroupAcceptance.hasOne(PersonalTutoring, {
-            as: 'personalTutoring',
-            onDelete: 'cascade'
-        })
-        groupAcceptance.hasOne(GroupTutoring, {
-            as: 'groupTutoring',
-            onDelete: 'cascade'
-        })
         let options = {
             sequelize
         }
         await super.init(attributes, options)
+        GroupAcceptance.setMemberAssocations()
     }
-
+    
     constructor(groupAcceptance) {
         super(groupAcceptance)
         this.joinRequestDate = groupAcceptance.joinRequestDate
@@ -49,6 +39,15 @@ class GroupAcceptance extends DefaultModel {
         this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
         this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
         this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
+    }
+
+    static setMemberAssocations() {
+        GroupAcceptance.belongsTo(Member, {
+            as: 'tutor'
+        })
+        Member.hasOne(GroupAcceptance, {
+            as: 'acceptance'
+        })
     }
 }
 

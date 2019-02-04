@@ -14,13 +14,11 @@ class GroupTutoring extends DefaultModel {
             personalMainPresentationDate: Sequelize.DATEONLY,
             personalMainPresentationSignature: Sequelize.STRING
         }
-        GroupTutoring.belongsTo(GroupAcceptance, {
-            as: 'acceptance'
-        })
         let options = {
             sequelize
         }
         await super.init(sequelize, options)
+        GroupTutoring.setGroupAcceptanceAssociations()
     }
 
     constructor(groupTutoring) {
@@ -34,6 +32,16 @@ class GroupTutoring extends DefaultModel {
         this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
         this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
         this.acceptance = groupTutoring.acceptance
+    }
+
+    static setGroupAcceptanceAssociations() {
+        GroupTutoring.belongsTo(GroupAcceptance, {
+            as: 'acceptance'
+        })
+        GroupAcceptance.hasOne(GroupTutoring, {
+            as: 'groupTutoring',
+            onDelete: 'cascade'
+        })
     }
 }
 

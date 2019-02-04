@@ -16,13 +16,11 @@ class PersonalTutoring extends DefaultModel {
             mamtakFinalizedAt: Sequelize.DATEONLY,
             mamtakTutorSignature: Sequelize.STRING
         }
-        PersonalTutoring.belongsTo(GroupAcceptance, {
-            as: 'acceptance'
-        })
         let options = {
             sequelize
         }
         await super.init(sequelize, options)
+        PersonalTutoring.setGroupAcceptanceAssociations()
     }
 
     constructor(personalTutoring) {
@@ -38,6 +36,16 @@ class PersonalTutoring extends DefaultModel {
         this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
         this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
         this.acceptance = personalTutoring.acceptance
+    }
+
+    static setGroupAcceptanceAssociations() {
+        PersonalTutoring.belongsTo(GroupAcceptance, {
+            as: 'acceptance'
+        })
+        GroupAcceptance.hasOne(PersonalTutoring, {
+            as: 'personalTutoring',
+            onDelete: 'cascade'
+        })
     }
 }
 

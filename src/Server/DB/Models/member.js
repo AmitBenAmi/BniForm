@@ -56,6 +56,7 @@ class Member extends DefaultModel {
         this.lastName = member.lastName
         this.phone = member.phone
         this.tutor = member.tutor
+        this.acceptance = member.acceptance
     }
 }
 
