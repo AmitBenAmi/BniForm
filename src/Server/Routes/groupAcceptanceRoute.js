@@ -4,7 +4,6 @@ class GroupAcceptanceRoute {
     static async init(app, db) {
         this.groupAcceptanceController = new GroupAcceptanceController(db)
         this.groupAcceptanceController.init()
-        this.groupAcceptanceController.associate()
     }
 }
 
