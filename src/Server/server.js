@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', { root: path.resolve('dist/Client') })
 })
 
-let initialize = () => {
+let initialize = async () => {
     let db = new DataBase('bni', 'bni', 'Aa123456', '127.0.0.1')
     await db.connect()
     await MemberRoute.init(app, db)
