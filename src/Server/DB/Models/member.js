@@ -34,7 +34,7 @@ class Member extends DefaultModel {
                     len: [7,10]
                 }
             },
-            tutor: {
+            isTutor: {
                 type: Sequelize.BOOLEAN,
                 allowNull: false,
                 defaultValue: false,
@@ -55,8 +55,7 @@ class Member extends DefaultModel {
         this.firstName = member.firstName
         this.lastName = member.lastName
         this.phone = member.phone
-        this.tutor = member.tutor
-        this.acceptance = member.acceptance
+        this.isTutor = member.isTutor
     }
 }
 
