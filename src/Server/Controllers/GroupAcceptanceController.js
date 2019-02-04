@@ -5,12 +5,23 @@ import GroupTutoring from '../DB/Models/groupTutoring'
 class GroupAcceptanceController {
     constructor(db) {
         this.db = db
+        this.models = [
+            GroupTutoring,
+            PersonalTutoring,
+            GroupAcceptance
+        ]
     }
 
-    async init() {
-        await GroupAcceptance.init(this.db)
-        await PersonalTutoring.init(this.db)
-        await GroupTutoring.init(this.db)
+    init() {
+        this.models.forEach(async (model) => {
+            await model.init(this.db)
+        })
+    }
+
+    associate() {
+        this.models.forEach(async (model) => {
+            await model.associate()
+        })
     }
 }
 
