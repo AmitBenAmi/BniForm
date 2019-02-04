@@ -32,7 +32,7 @@ let startServer = () => {
 
 (async () => {
     try {
-        initialize()
+        await initialize()
         startServer()
     } catch (e) {
         console.error(e.message)
