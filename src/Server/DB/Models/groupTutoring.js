@@ -17,12 +17,13 @@ class GroupTutoring extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(attributes, options)
-        GroupTutoring.setGroupAcceptanceAssociations()
-        await super.sync({
+        let syncOptions = {
             alter: true,
             force: true
-        })
+        }
+
+        await super.init(attributes, options, syncOptions)
+        await super.sync(this.syncOptions)
     }
 
     constructor(groupTutoring) {
@@ -37,10 +38,12 @@ class GroupTutoring extends DefaultModel {
         this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
     }
 
-    static setGroupAcceptanceAssociations() {
+    static async associate() {
         GroupTutoring.belongsTo(GroupAcceptance, {
             onDelete: 'cascade'
         })
+
+        await super.sync(this.syncOptions)
     }
 }
 

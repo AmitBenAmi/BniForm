@@ -19,13 +19,13 @@ class GroupAcceptance extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(attributes, options)
-
-        GroupAcceptance.setMemberAssocations()
-        await super.sync({
+        let syncOptions = {
             alter: true,
             force: true
-        })
+        }
+
+        await super.init(attributes, options)
+        await super.sync(this.syncOptions)
     }
     
     constructor(groupAcceptance) {
@@ -43,11 +43,13 @@ class GroupAcceptance extends DefaultModel {
         this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
     }
 
-    static setMemberAssocations() {
+    static async associate() {
         GroupAcceptance.belongsTo(Member, {
             as: 'tutor',
             onDelete: 'cascade'
         })
+
+        await super.sync(this.syncOptions)
     }
 }
 

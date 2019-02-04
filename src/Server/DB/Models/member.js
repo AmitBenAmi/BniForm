@@ -46,8 +46,12 @@ class Member extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(attributes, options)
-        await super.sync({alter: true})
+        let syncOptions = {
+            alter: true
+        }
+
+        await super.init(attributes, options, syncOptions)
+        await super.sync(this.syncOptions)
     }
 
     constructor(member) {
