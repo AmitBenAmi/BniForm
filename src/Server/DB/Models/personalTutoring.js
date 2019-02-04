@@ -19,7 +19,8 @@ class PersonalTutoring extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(sequelize, options)
+        await super.init(attributues, options)
+        await super.sync({alter: true})
         PersonalTutoring.setGroupAcceptanceAssociations()
     }
 

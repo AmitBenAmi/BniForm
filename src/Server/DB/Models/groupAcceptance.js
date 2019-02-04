@@ -22,6 +22,7 @@ class GroupAcceptance extends DefaultModel {
             sequelize
         }
         await super.init(attributes, options)
+        await super.sync({alter: true})
         GroupAcceptance.setMemberAssocations()
     }
     

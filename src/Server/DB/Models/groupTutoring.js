@@ -17,7 +17,8 @@ class GroupTutoring extends DefaultModel {
         let options = {
             sequelize
         }
-        await super.init(sequelize, options)
+        await super.init(attributes, options)
+        await super.sync({alter: true})
         GroupTutoring.setGroupAcceptanceAssociations()
     }
 
