@@ -6,9 +6,9 @@ class GroupAcceptanceController {
     constructor(db) {
         this.db = db
         this.models = [
+            GroupAcceptance,
             GroupTutoring,
-            PersonalTutoring,
-            GroupAcceptance
+            PersonalTutoring
         ]
     }
 
