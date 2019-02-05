@@ -15,8 +15,6 @@ class GroupAcceptanceController {
     async init() {
         for (let i = 0; i < this.models.length; i++) {
             await this.models[i].init(this.db)
-            await this.models[i].associate()
-            await this.models[i].sync()
         }
     }
 }

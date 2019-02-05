@@ -41,6 +41,7 @@ class GroupAcceptance extends DefaultModel {
         }
 
         await super.init(attributes, options)
+        await GroupAcceptance.associate()
         await GroupAcceptance.sync()
     }
     

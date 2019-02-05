@@ -36,6 +36,7 @@ class GroupTutoring extends DefaultModel {
         }
 
         await super.init(attributes, options)
+        await GroupTutoring.associate()
         await GroupTutoring.sync()
     }
 

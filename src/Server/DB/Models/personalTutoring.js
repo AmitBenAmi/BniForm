@@ -40,6 +40,7 @@ class PersonalTutoring extends DefaultModel {
         }
 
         await super.init(attributues, options)
+        await PersonalTutoring.associate()
         await PersonalTutoring.sync()
     }
 
