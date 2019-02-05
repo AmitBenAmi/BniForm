@@ -12,12 +12,12 @@ class GroupAcceptanceController {
         ]
     }
 
-    init() {
-        this.models.forEach(async (model) => {
+    async init() {
+        for (let i = 0; i < this.models.length; i++) {
             await model.init(this.db)
             await model.associate()
             await model.sync()
-        })
+        }
     }
 }
 
