@@ -15,7 +15,7 @@ class MemberController {
     }
 
     async getMember(req, res) {
-        let member = await Member.findByPk(req.params.memberId)
+        let member = await Member.findById(req.params.memberId)
         res.json(member)
     }
 
