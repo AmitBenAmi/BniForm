@@ -1,4 +1,5 @@
 import Member from '../DB/Models/member'
+import GroupAcceptance from '../DB/Models/groupAcceptance';
 
 class MemberController {
     constructor(db) {
@@ -15,7 +16,11 @@ class MemberController {
     }
 
     async getMember(req, res) {
-        let member = await Member.findById(req.params.memberId)
+        let member = await Member.findById(req.params.memberId, {
+            include: [{
+                model: GroupAcceptance
+            }]
+        })
         res.json(member)
     }
 
