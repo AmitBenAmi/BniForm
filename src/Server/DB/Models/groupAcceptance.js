@@ -54,8 +54,6 @@ class GroupAcceptance extends DefaultModel {
             as: 'tutor',
             onDelete: 'cascade'
         })
-
-        await GroupAcceptance.sync()
     }
 }
 

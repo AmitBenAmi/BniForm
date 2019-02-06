@@ -53,7 +53,7 @@ class PersonalTutoring extends DefaultModel {
             onDelete: 'cascade'            
         })
 
-        await PersonalTutoring.sync()
+        GroupAcceptance.hasOne(PersonalTutoring)
     }
 }
 

@@ -48,8 +48,6 @@ class GroupTutoring extends DefaultModel {
         GroupTutoring.belongsTo(GroupAcceptance, {
             onDelete: 'cascade'
         })
-
-        await GroupTutoring.sync()
     }
 }
 
