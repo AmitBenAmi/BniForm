@@ -1,6 +1,8 @@
 import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
 import Member from './member'
+import PersonalTutoring from './personalTutoring';
+import GroupTutoring from './groupTutoring';
 
 const syncOptions = {
     alter: true,
@@ -16,11 +18,13 @@ class GroupAcceptance extends DefaultModel {
         this.formReturningDate = groupAcceptance.formReturningDate
         this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
         this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
-        this.personalTutoring = groupAcceptance.personalTutoring
         this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
         this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
         this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
         this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
+
+        this[PersonalTutoring.name] = groupAcceptance[PersonalTutoring.name]
+        this[GroupTutoring.name] = groupAcceptance[GroupTutoring.name]
     }
 
     static async init(sequelize) {

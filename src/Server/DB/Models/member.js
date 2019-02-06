@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize'
 import DefaultModel from './defaultModel'
+import GroupAcceptance from '../../../../dist/Server/DB/Models/groupAcceptance';
 
 const syncOptions = {
     alter: true
@@ -12,6 +13,8 @@ class Member extends DefaultModel {
         this.lastName = member.lastName
         this.phone = member.phone
         this.isTutor = member.isTutor
+
+        this[GroupAcceptance.name] = member[GroupAcceptance.name]
     }
 
     static async init(sequelize) {
