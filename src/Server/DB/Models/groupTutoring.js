@@ -48,6 +48,8 @@ class GroupTutoring extends DefaultModel {
         GroupTutoring.belongsTo(GroupAcceptance, {
             onDelete: 'cascade'
         })
+
+        GroupAcceptance.hasOne(GroupTutoring)
     }
 }
 

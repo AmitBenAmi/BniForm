@@ -54,6 +54,8 @@ class GroupAcceptance extends DefaultModel {
             as: 'tutor',
             onDelete: 'cascade'
         })
+
+        Member.hasOne(GroupAcceptance)
     }
 }
 
