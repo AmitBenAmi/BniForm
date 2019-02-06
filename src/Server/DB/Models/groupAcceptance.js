@@ -55,6 +55,10 @@ class GroupAcceptance extends DefaultModel {
 
     static async associate() {
         GroupAcceptance.belongsTo(Member, {
+            onDelete: 'cascade'
+        })
+
+        GroupAcceptance.belongsTo(Member, {
             as: 'tutor',
             onDelete: 'cascade'
         })
