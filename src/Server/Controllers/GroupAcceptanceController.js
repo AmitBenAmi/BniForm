@@ -17,6 +17,17 @@ class GroupAcceptanceController {
             await this.models[i].init(this.db)
         }
     }
+
+    async getGroupAcceptance(req, res) {
+        let groupAcceptance = await GroupAcceptance.findById(req.params.acceptanceId, {
+            include: [{
+                model: PersonalTutoring
+            }, {
+                model: GroupTutoring
+            }]
+        })
+        res.json(groupAcceptance)
+    }
 }
 
 export default GroupAcceptanceController
