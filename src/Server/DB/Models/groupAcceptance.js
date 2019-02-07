@@ -10,22 +10,22 @@ const syncOptions = {
 }
 
 class GroupAcceptance extends DefaultModel {
-    constructor(groupAcceptance) {
-        super(groupAcceptance)
-        this.joinRequestDate = groupAcceptance.joinRequestDate
-        this.acceptanceDate = groupAcceptance.acceptanceDate
-        this.formReturnToFriendCommitteeDueDate = groupAcceptance.formReturnToFriendCommitteeDueDate
-        this.formReturningDate = groupAcceptance.formReturningDate
-        this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
-        this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
-        this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
-        this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
-        this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
-        this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
+    // constructor(groupAcceptance) {
+    //     super(groupAcceptance)
+    //     this.joinRequestDate = groupAcceptance.joinRequestDate
+    //     this.acceptanceDate = groupAcceptance.acceptanceDate
+    //     this.formReturnToFriendCommitteeDueDate = groupAcceptance.formReturnToFriendCommitteeDueDate
+    //     this.formReturningDate = groupAcceptance.formReturningDate
+    //     this.mspGuidanceRegistrationDate = groupAcceptance.mspGuidanceRegistrationDate
+    //     this.mspGuidanceExecutionDate = groupAcceptance.mspGuidanceExecutionDate
+    //     this.regulationsApprovalDate = groupAcceptance.regulationsApprovalDate
+    //     this.regulationsApprovalSignature = groupAcceptance.regulationsApprovalSignature
+    //     this.tutorTeamCeoApprovalDate = groupAcceptance.tutorTeamCeoApprovalDate
+    //     this.tutorTeamCeoApprovalSignature = groupAcceptance.tutorTeamCeoApprovalSignature
 
-        this[PersonalTutoring.name] = groupAcceptance[PersonalTutoring.name]
-        this[GroupTutoring.name] = groupAcceptance[GroupTutoring.name]
-    }
+    //     this[PersonalTutoring.name] = groupAcceptance[PersonalTutoring.name]
+    //     this[GroupTutoring.name] = groupAcceptance[GroupTutoring.name]
+    // }
 
     static async init(sequelize) {
         let attributes = {

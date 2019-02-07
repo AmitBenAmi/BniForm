@@ -8,19 +8,19 @@ const syncOptions = {
 }
 
 class PersonalTutoring extends DefaultModel {
-    constructor(personalTutoring) {
-        super(personalTutoring)
-        this.meetingWithTutorialCeo = personalTutoring.meetingWithTutorialCeo
-        this.firstMeetingWithMasterTutor = personalTutoring.firstMeetingWithMasterTutor
-        this.secondMeetingWithMasterTutor = personalTutoring.secondMeetingWithMasterTutor
-        this.thirdMeetingWithMasterTutor = personalTutoring.thirdMeetingWithMasterTutor
-        this.oneOnOneSharedMeetingDateWithTutor = personalTutoring.oneOnOneSharedMeetingDateWithTutor
-        this.oneOnOneSharedMeetingWithWhoWithTutor = personalTutoring.oneOnOneSharedMeetingWithWhoWithTutor
-        this.businessVisualityTutorial = personalTutoring.businessVisualityTutorial
-        this.mamtakTutorial = personalTutoring.mamtakTutorial
-        this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
-        this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
-    }
+    // constructor(personalTutoring) {
+    //     super(personalTutoring)
+    //     this.meetingWithTutorialCeo = personalTutoring.meetingWithTutorialCeo
+    //     this.firstMeetingWithMasterTutor = personalTutoring.firstMeetingWithMasterTutor
+    //     this.secondMeetingWithMasterTutor = personalTutoring.secondMeetingWithMasterTutor
+    //     this.thirdMeetingWithMasterTutor = personalTutoring.thirdMeetingWithMasterTutor
+    //     this.oneOnOneSharedMeetingDateWithTutor = personalTutoring.oneOnOneSharedMeetingDateWithTutor
+    //     this.oneOnOneSharedMeetingWithWhoWithTutor = personalTutoring.oneOnOneSharedMeetingWithWhoWithTutor
+    //     this.businessVisualityTutorial = personalTutoring.businessVisualityTutorial
+    //     this.mamtakTutorial = personalTutoring.mamtakTutorial
+    //     this.mamtakFinalizedAt = personalTutoring.mamtakFinalizedAt
+    //     this.mamtakTutorSignature = personalTutoring.mamtakTutorSignature
+    // }
 
     static async init(sequelize) {
         let attributues = {

@@ -7,15 +7,15 @@ const syncOptions = {
 }
 
 class Member extends DefaultModel {
-    constructor(member) {
-        super(member)
-        this.firstName = member.firstName
-        this.lastName = member.lastName
-        this.phone = member.phone
-        this.isTutor = member.isTutor
+    // constructor(member) {
+    //     super(member)
+    //     this.firstName = member.firstName
+    //     this.lastName = member.lastName
+    //     this.phone = member.phone
+    //     this.isTutor = member.isTutor
 
-        this[GroupAcceptance.name] = member[GroupAcceptance.name]
-    }
+    //     this[GroupAcceptance.name] = member[GroupAcceptance.name]
+    // }
 
     static async init(sequelize) {
         let attributes = {

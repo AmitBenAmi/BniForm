@@ -8,17 +8,17 @@ const syncOptions = {
 }
 
 class GroupTutoring extends DefaultModel {
-    constructor(groupTutoring) {
-        super(groupTutoring)
-        this.givingAndReceivingReferencesSecretsDate = groupTutoring.givingAndReceivingReferencesSecretsDate
-        this.givingAndReceivingReferencesSecretsSignatu = groupTutoring.givingAndReceivingReferencesSecretsSignature
-        this.guestsInvitingSkillsDate = groupTutoring.guestsInvitingSkillsDate 
-        this.guestsInvitingSkillsSignatu = groupTutoring.guestsInvitingSkillsSignature
-        this.effectiveOneonOneMeetingsDate = groupTutoring.effectiveOneonOneMeetingsDate 
-        this.effectiveOneonOneMeetingsSignatu = groupTutoring.effectiveOneonOneMeetingsSignature
-        this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
-        this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
-    }
+    // constructor(groupTutoring) {
+    //     super(groupTutoring)
+    //     this.givingAndReceivingReferencesSecretsDate = groupTutoring.givingAndReceivingReferencesSecretsDate
+    //     this.givingAndReceivingReferencesSecretsSignatu = groupTutoring.givingAndReceivingReferencesSecretsSignature
+    //     this.guestsInvitingSkillsDate = groupTutoring.guestsInvitingSkillsDate 
+    //     this.guestsInvitingSkillsSignatu = groupTutoring.guestsInvitingSkillsSignature
+    //     this.effectiveOneonOneMeetingsDate = groupTutoring.effectiveOneonOneMeetingsDate 
+    //     this.effectiveOneonOneMeetingsSignatu = groupTutoring.effectiveOneonOneMeetingsSignature
+    //     this.personalMainPresentationDate = groupTutoring.personalMainPresentationDate
+    //     this.personalMainPresentationSignat = groupTutoring.personalMainPresentationSignatur
+    // }
     
     static async init(sequelize) {
         let attributes = {
